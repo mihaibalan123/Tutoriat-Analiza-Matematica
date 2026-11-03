@@ -1,0 +1,385 @@
+\documentclass[12pt, a4paper]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[romanian]{babel}
+\usepackage{indentfirst}
+
+\usepackage{csquotes}
+\DeclareQuoteStyle{romanian}
+{\quotedblbase}
+{\textquotedblright}
+{\guillemotleft}
+{\guillemotright}
+
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage[margin=2.5cm]{geometry}
+
+\usepackage{graphicx}
+
+\usepackage[
+colorlinks,
+linkcolor={black},
+menucolor={black},
+citecolor={black},
+urlcolor={blue}
+]{hyperref}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{enumitem}
+
+\newcommand{\bigO}[1]{\mathcal{O}\left(#1\right)}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+
+\usepackage{fancyhdr}
+
+\title{Analiză Matematică -- Tutoriat I\\ Criterii de Convergență pentru Serii Numerice}
+\author{[Bălan Mihai Ristea Octavian-Cristian]}
+
+\begin{document}
+	
+	\begin{titlepage}
+		\centering
+		\vspace*{2cm}
+		{\Huge \bfseries Analiză Matematică \par}
+		\vspace{1cm}
+		{\Large \bfseries Tutoriat I: Criterii de Convergență \par}
+		\vspace{0.5cm}
+		\vfill
+		{\Large \textbf{Autori:} \\ Ristea Octavian-Cristian \\ Bălan Mihai \par}
+		\vspace{1.5cm}
+		{\large Universitatea din București \par}
+		{\large Facultatea de Matematică și Informatică \par}
+		\vspace{2cm}
+	\end{titlepage}
+	
+	\fancypagestyle{main}{
+		\fancyhf{}
+		\renewcommand\headrulewidth{0.4pt}
+		\fancyhead[L]{\small Analiză Matematică -- Seminar V}
+		\fancyhead[R]{\small Criterii de Convergență}
+		\fancyfoot[C]{\thepage}
+	}
+	
+	\cleardoublepage
+	\tableofcontents
+	\cleardoublepage
+	
+	\pagestyle{main}
+	
+	\chapter{Serii cu Termeni Pozitivi}
+	
+	Fie $\sum_{n=1}^{\infty} a_n$ o serie de numere reale cu termeni strictly pozitivi ($a_n > 0, \, \forall n \ge 1$).
+	
+	\section{Criteriul Raportului (D'Alembert)}
+	\textit{Recomandat în special pentru serii ai căror termeni generali conțin factoriale ($n!$).}
+	
+	Fie limita $l = \lim_{n \to \infty} \dfrac{a_{n+1}}{a_n}$. Natura seriei depinde de valoarea lui $l$:
+	\[
+	l = \lim_{n \to \infty} \frac{a_{n+1}}{a_n} \implies 
+	\begin{cases} 
+		l < 1 \implies \text{serie convergentă} \\ 
+		l > 1 \implies \text{serie divergentă} \\ 
+		l = 1 \implies \text{ ? } \to \text{se aplică Criteriul Raabe-Duhamel (Secțiunea \ref{sec:raabe})}
+	\end{cases}
+	\]
+	
+	\section{Criteriul Radical (Cauchy)}
+	\textit{Se aplică de regulă când termenul general $a_n$ este o expresie la puterea $n$.}
+	
+	Fie limita $l = \lim_{n \to \infty} \sqrt[n]{a_n}$.
+	\[
+	l = \lim_{n \to \infty} \sqrt[n]{a_n} \implies 
+	\begin{cases} 
+		l < 1 \implies \text{serie convergentă} \\ 
+		l > 1 \implies \text{serie divergentă} \\ 
+		l = 1 \implies \text{? } \circledast \quad \text{(des întâlnit în nedeterminări } [1^\infty]\text{)}
+	\end{cases}
+	\]
+	
+	\section{Criteriul Comparației (cu limita...)}
+	\textit{Se utilizează când termenul general conține expresii algebrice, radicali, funcții trigonometrice sau logaritmice unde argumentul tinde la $0^+$.}
+	
+	Considerăm seria de analizat $\sum a_n$ și o serie auxiliară $\sum b_n$ (pe care o alegem/inventăm convenabil, de obicei o serie de referință).
+	\[
+	\text{Dacă } \lim_{n \to \infty} \frac{a_n}{b_n} \in (0, +\infty), \text{ atunci } \sum_{n} a_n \sim \sum_{n} b_n \quad \text{(seriile au aceeași natură).}
+	\]
+	
+	\section{Criteriul Raabe-Duhamel} \label{sec:raabe}
+	\textit{Se utilizează în mod direct atunci când Criteriul Raportului furnizează limita $l = 1$.}
+	
+	Fie limita $l = \lim_{n \to \infty} n \left( \dfrac{a_n}{a_{n+1}} - 1 \right)$.
+	\[
+	l = \lim_{n \to \infty} n \left( \frac{a_n}{a_{n+1}} - 1 \right) \implies 
+	\begin{cases} 
+		l < 1 \implies \text{serie divergentă} \\ 
+		l > 1 \implies \text{serie convergentă} \\ 
+		l = 1 \implies \text{? (ne uităm în enunț/ armonică/ [$1^\infty$])}
+	\end{cases}
+	\]
+	
+	\section{Criteriul Logaritmic}
+	\textit{$\lim_{? \to \infty} \ln(?)$ adică TOTAL NEMATEMATIC cazuri de tipul ln din ceva care acel ceva tinde la infinit}
+	
+	Fie limita $l = \lim_{n \to \infty} \dfrac{\ln \left( \frac{1}{a_n} \right)}{\ln n}$.
+	\[
+	l = \lim_{n \to \infty} \frac{\ln \frac{1}{a_n}}{\ln n} \implies 
+	\begin{cases} 
+		l < 1 \implies \text{serie divergentă} \\ 
+		l > 1 \implies \text{serie convergentă} \\ 
+		l = 1 \implies \text{? - aici chiar trebuie studiat}
+	\end{cases}
+	\]
+	
+	\section{Criteriul Condensării (Cauchy)}
+	Dacă șirul $(a_n)_{n \ge 1}$ este monoton descrecător ($a_n \searrow$) și format din termeni pozitivi, atunci:
+	\[
+	\sum_{n} a_n \sim \sum_{n} 2^n a_{2^n} \quad \text{(seria dată are aceeași natură cu seria condensată).}
+	\]
+	
+	
+	\chapter{Serii cu Termeni Alternanți}
+	
+	Fie seria de forma $\sum_{n=1}^{\infty} (-1)^n a_n$ cu $a_n > 0$.
+	
+	\section{Criteriul lui Leibniz}
+	Seria alternantă $\sum_{n=1}^{\infty} (-1)^n a_n$ este \textbf{convergentă} dacă sunt verificate simultan următoarele două condiții:
+	\begin{enumerate}
+		\item Șirul $(a_n)_n$ este monoton descrecător ($a_n \searrow$);
+		\item Limita termenului general este zero ($\lim_{n \to \infty} a_n = 0$).
+	\end{enumerate}
+	\[
+	\begin{rcases}
+		a_n \searrow \\
+		a_n \to 0
+	\end{rcases}
+	\implies \sum_{n=1}^{\infty} (-1)^n a_n \text{ este convergentă.}
+	\]
+	
+	\section{Convergența Absolută și Criteriul de Divergență}
+	
+	\paragraph{Convergență Absolută:}
+	Spunem că seria $\sum x_n$ este absolut convergentă dacă seria modulelor $\sum |x_n|$ este convergentă. 
+	\[
+	\sum |x_n| \text{ absolut convergentă} \implies \sum x_n \text{ convergentă.}
+	\]
+	
+	\paragraph{Criteriu Suficient de Divergență ($\circledast$):}
+	Dacă limita termenului general este diferită de zero sau nu există:
+	\[
+	a_n \not\to 0 \implies \sum a_n \text{ este divergentă.}
+	\]
+	
+	
+	\chapter{Serii Remarcabile de Referință}
+	
+	\section{Seria Geometrică}
+	\[
+	\sum_{n=0}^{\infty} q^n : \begin{cases} 
+		\text{convergentă}, & \text{dacă } q \in (-1, 1) \quad (\abs{q} < 1) \\ 
+		\text{divergentă}, & \text{dacă } q \notin (-1, 1) \quad (\abs{q} \ge 1)
+	\end{cases}
+	\]
+	
+	\section{Seria Armonică Generalizată ($\alpha$-serie)}
+	\[
+	\sum_{n=1}^{\infty} \frac{1}{n^\alpha} : \begin{cases} 
+		\text{convergentă}, & \text{dacă } \alpha > 1 \\ 
+		\text{divergentă}, & \text{dacă } \alpha \le 1
+	\end{cases}
+	\]
+	
+	
+	\chapter{Exerciții Rezolvate}
+	
+	Studiați natura următoarelor serii numerice utilizând criteriile corespunzătoare:
+	
+	\begin{enumerate}[label=\textbf{\roman*)}]
+		
+		\item \textbf{Exercițiul 1 (Criteriul Raportului -- D'Alembert)} \\
+		Studiați natura seriei:
+		\[
+		\sum_{n=1}^{\infty} \frac{n!}{3^n}
+		\]
+		\textbf{Rezolvare:} \\
+		Termenul general al seriei este $a_n = \dfrac{n!}{3^n} > 0$. Deoarece expresia conține un factorial ($n!$), aplicăm Criteriul Raportului (D'Alembert):
+		\[
+		a_{n+1} = \frac{(n+1)!}{3^{n+1}}
+		\]
+		Calculăm raportul $\dfrac{a_{n+1}}{a_n}$:
+		\[
+		\frac{a_{n+1}}{a_n} = \frac{(n+1)!}{3^{n+1}} \cdot \frac{3^n}{n!} = \frac{(n+1) \cdot n!}{3 \cdot 3^n} \cdot \frac{3^n}{n!} = \frac{n+1}{3}
+		\]
+		Trecem la limită pentru $n \to \infty$:
+		\[
+		l = \lim_{n \to \infty} \frac{a_{n+1}}{a_n} = \lim_{n \to \infty} \frac{n+1}{3} = +\infty
+		\]
+		Deoarece $l = +\infty > 1$, conform Criteriului Raportului (D'Alembert), seria este \textbf{divergentă}.
+		
+		\vspace{0.5cm}
+		
+		\item \textbf{Exercițiul 2 (Criteriul Radical -- Cauchy)} \\
+		Studiați natura seriei:
+		\[
+		\sum_{n=1}^{\infty} \left(\frac{n}{2n+1}\right)^n
+		\]
+		\textbf{Rezolvare:} \\
+		Termenul general este $a_n = \left(\dfrac{n}{2n+1}\right)^n > 0$. Fiind vorba de o expresie la puterea $n$, aplicăm Criteriul Radical (Cauchy):
+		\[
+		l = \lim_{n \to \infty} \sqrt[n]{a_n} = \lim_{n \to \infty} \sqrt[n]{\left(\frac{n}{2n+1}\right)^n} = \lim_{n \to \infty} \frac{n}{2n+1} = \frac{1}{2}
+		\]
+		Deoarece $l = \dfrac{1}{2} < 1$, conform Criteriului Radical (Cauchy), seria este \textbf{convergentă}.
+		
+		\vspace{0.5cm}
+		
+		\item \textbf{Exercițiul 3 (Criteriul Raabe-Duhamel)} \\
+		Studiați natura seriei:
+		\[
+		\sum_{n=1}^{\infty} \frac{1 \cdot 3 \cdot 5 \cdot \ldots \cdot (2n-1)}{2 \cdot 4 \cdot 6 \cdot \ldots \cdot (2n)}
+		\]
+		\textbf{Rezolvare:} \\
+		Termenul general al seriei este $a_n = \dfrac{1 \cdot 3 \cdot 5 \cdot \ldots \cdot (2n-1)}{2 \cdot 4 \cdot 6 \cdot \ldots \cdot (2n)}$.
+		
+		Încercăm mai întâi Criteriul Raportului:
+		\[
+		\frac{a_{n+1}}{a_n} = \frac{1 \cdot 3 \cdot \ldots \cdot (2n-1) \cdot (2n+1)}{2 \cdot 4 \cdot \ldots \cdot (2n) \cdot (2n+2)} \cdot \frac{2 \cdot 4 \cdot \ldots \cdot (2n)}{1 \cdot 3 \cdot \ldots \cdot (2n-1)} = \frac{2n+1}{2n+2}
+		\]
+		\[
+		l = \lim_{n \to \infty} \frac{a_{n+1}}{a_n} = \lim_{n \to \infty} \frac{2n+1}{2n+2} = 1 \quad \text{(?)}
+		\]
+		Deoarece Criteriul Raportului furnizează $l = 1$, aplicăm Criteriul Raabe-Duhamel:
+		\[
+		l_{Raabe} = \lim_{n \to \infty} n \left( \frac{a_n}{a_{n+1}} - 1 \right) = \lim_{n \to \infty} n \left( \frac{2n+2}{2n+1} - 1 \right) = \lim_{n \to \infty} n \cdot \frac{1}{2n+1} = \lim_{n \to \infty} \frac{n}{2n+1} = \frac{1}{2}
+		\]
+		Deoarece $l_{Raabe} = \dfrac{1}{2} < 1$, conform Criteriului Raabe-Duhamel, seria este \textbf{divergentă}.
+		
+		\vspace{0.5cm}
+		
+		\item \textbf{Exercițiul 4 (Criteriul Raportului cu Produs)} \\
+		Studiați natura seriei:
+		\[
+		\sum_{n=1}^{\infty} \frac{n!}{3 \cdot 5 \cdot 7 \cdot \ldots \cdot (2n+1)}
+		\]
+		\textbf{Rezolvare:} \\
+		Termenul general este $a_n = \dfrac{n!}{3 \cdot 5 \cdot 7 \cdot \ldots \cdot (2n+1)} > 0$. Aplicăm Criteriul Raportului (D'Alembert):
+		\[
+		a_{n+1} = \frac{(n+1)!}{3 \cdot 5 \cdot \ldots \cdot (2n+1) \cdot (2n+3)}
+		\]
+		Calculăm raportul:
+		\[
+		\frac{a_{n+1}}{a_n} = \frac{(n+1)!}{3 \cdot 5 \cdot \ldots \cdot (2n+1) \cdot (2n+3)} \cdot \frac{3 \cdot 5 \cdot \ldots \cdot (2n+1)}{n!} = \frac{n+1}{2n+3}
+		\]
+		Calculăm limita:
+		\[
+		l = \lim_{n \to \infty} \frac{a_{n+1}}{a_n} = \lim_{n \to \infty} \frac{n+1}{2n+3} = \frac{1}{2}
+		\]
+		Deoarece $l = \dfrac{1}{2} < 1$, conform Criteriului Raportului, seria este \textbf{convergentă}.
+		
+		\vspace{0.5cm}
+		
+		\item \textbf{Exercițiul 5 (Criteriul Logaritmic)} \\
+		Studiați natura seriei folosind criteriul logaritmic:
+		\[
+		\sum_{n=1}^{\infty} \left(\frac{n}{n+1}\right)^{n^2}
+		\]
+		\textbf{Rezolvare:} \\
+		Termenul general este $a_n = \left(\dfrac{n}{n+1}\right)^{n^2} = \left(\dfrac{n+1}{n}\right)^{-n^2}$.
+		
+		Avem:
+		\[
+		\ln \left(\frac{1}{a_n}\right) = \ln \left( \left(\frac{n+1}{n}\right)^{n^2} \right) = n^2 \ln \left(1 + \frac{1}{n}\right)
+		\]
+		Aplicăm Criteriul Logaritmic calculând limita:
+		\[
+		l = \lim_{n \to \infty} \frac{\ln \left(\frac{1}{a_n}\right)}{\ln n} = \lim_{n \to \infty} \frac{n^2 \ln \left(1 + \frac{1}{n}\right)}{\ln n}
+		\]
+		Utilizând limita remarcabilă $\lim_{x \to 0} \dfrac{\ln(1+x)}{x} = 1$, rescriem numărătorul:
+		\[
+		n^2 \ln \left(1 + \frac{1}{n}\right) = n \cdot \frac{\ln \left(1 + \frac{1}{n}\right)}{\frac{1}{n}} \sim n
+		\]
+		Limita devine astfel:
+		\[
+		l = \lim_{n \to \infty} \frac{n}{\ln n} = +\infty
+		\]
+		Deoarece $l = +\infty > 1$, conform Criteriului Logaritmic, seria este \textbf{convergentă}.
+		
+		\vspace{0.5cm}
+		
+		\item \textbf{Exercițiul 6 (Criteriul Comparației)} \\
+		Studiați natura seriei:
+		\[
+		\sum_{n=1}^{\infty} \frac{3n^2 + 5n}{n^4 - n^2 + 2}
+		\]
+		\textbf{Rezolvare:} \\
+		Termenul general este $a_n = \dfrac{3n^2 + 5n}{n^4 - n^2 + 2} > 0$. Pentru valori mari ale lui $n$, termenii dominanți arată că $a_n \sim \dfrac{3n^2}{n^4} = \dfrac{3}{n^2}$.
+		
+		Alegem seria de comparație $b_n = \dfrac{1}{n^2}$ și calculăm limita raportului:
+		\[
+		l = \lim_{n \to \infty} \frac{a_n}{b_n} = \lim_{n \to \infty} \frac{3n^2 + 5n}{n^4 - n^2 + 2} \cdot n^2 = \lim_{n \to \infty} \frac{3n^4 + 5n^3}{n^4 - n^2 + 2} = 3
+		\]
+		Cum $l = 3 \in (0, +\infty)$, cele două serii au aceeași natură. Seria $\sum_{n=1}^{\infty} \frac{1}{n^2}$ este o serie armonică generalizată cu exponent $\alpha = 2 > 1$, deci este \textbf{convergentă}.
+		
+		Prin urmare, conform Criteriului Comparației cu limită, seria dată este \textbf{convergentă}.
+		
+		\vspace{0.5cm}
+		
+		\item \textbf{Exercițiul 7 (Criteriul Condensării -- Cauchy)} \\
+		Studiați natura seriei:
+		\[
+		\sum_{n=2}^{\infty} \frac{1}{n \ln n}
+		\]
+		\textbf{Rezolvare:} \\
+		Termenul general $a_n = \dfrac{1}{n \ln n} > 0$ formează un șir monoton descrecător ($a_n \searrow 0$). Aplicăm Criteriul Condensării (Cauchy) studiind seria $ \sum_{n=2}^{\infty} 2^n a_{2^n} $:
+		
+		Calculăm termenul seriei condensate:
+		\[
+		2^n a_{2^n} = 2^n \cdot \frac{1}{2^n \ln(2^n)} = \frac{2^n}{2^n \cdot n \ln 2} = \frac{1}{\ln 2} \cdot \frac{1}{n}
+		\]
+		Seria condensată devine:
+		\[
+		\sum_{n=2}^{\infty} 2^n a_{2^n} = \frac{1}{\ln 2} \sum_{n=2}^{\infty} \frac{1}{n}
+		\]
+		Seria $\sum_{n=2}^{\infty} \frac{1}{n}$ este seria armonică ($\alpha = 1$), despre care știm că este \textbf{divergentă}.
+		
+		Conform Criteriului Condensării, seria dată $\sum_{n=2}^{\infty} \frac{1}{n \ln n}$ are aceeași natură cu seria condensată, prin urmare este \textbf{divergentă}.
+		
+	\end{enumerate}
+	
+	\chapter{Probleme Propuse}
+	
+	Stabiliți natura următoarelor serii de numere reale și atunci când este posibil determinați suma acestora:
+	
+	\begin{enumerate}[label=\textbf{\arabic*.}]
+		\item $\displaystyle \sum_{n=1}^{\infty} \frac{1}{\sqrt{2n+1} + \sqrt{2n+3}} \quad$
+		\item $\displaystyle \sum_{n=2}^{\infty} \frac{1}{n^2 - 1} \quad$
+		\item $\displaystyle \sum_{n=1}^{\infty} \ln \frac{4n-1}{4n+3} \quad$
+		\item $\displaystyle \sum_{n=1}^{\infty} \left(-\frac{5}{6}\right)^n \quad$
+		\item $\displaystyle \sum_{n=1}^{\infty} \frac{3n+4}{n(n+1)(n+2)} \quad$
+		\item $\displaystyle \sum_{n=1}^{\infty} (-1)^n \quad$
+		\item $\displaystyle \sum_{n=1}^{\infty} \frac{n}{(n+1)!} \quad$
+		\item $\displaystyle \sum_{n=1}^{\infty} \left(\sqrt{n+3} - 2\sqrt{n+2} + \sqrt{n+1}\right) \quad$
+		\item $\displaystyle \sum_{n=1}^{\infty} \frac{2n+5}{(n+1)(n+2)(n+3)} \quad$
+		\item $\displaystyle \sum_{n=1}^{\infty} \frac{1}{\sqrt{n+1} + \sqrt{n+3}} \quad$
+		\item $\displaystyle \sum_{n=1}^{\infty} \frac{1}{(3n-2)(3n+1)} \quad$
+		\item $\displaystyle \sum_{n=1}^{\infty} \ln \frac{n}{n+1} \quad$
+		\item $\displaystyle \sum_{n=1}^{\infty} \left[3^n + (-3)^n\right] \quad$
+		\item $\displaystyle \sum_{n=0}^{\infty} \frac{a^n}{b^{n+1}} \,;\, a,b \in \mathbb{R}, \, b \neq 0 \quad $
+		\item $\displaystyle \sum_{n=0}^{\infty} \frac{(-3)^{n+3} + 2^{2n+1}}{8^{n+2}} \quad$
+		\item $\displaystyle \sum_{n=1}^{\infty} \frac{1}{n^2 + 4n + 3} \quad$
+		\item $\displaystyle \sum_{n=1}^{\infty} \frac{1}{(3n-2)(3n+1)(3n+4)} \quad$
+		\item $\displaystyle \sum_{n=1}^{\infty} \frac{4n+2}{n^3 + 3n^2 + 2n} \quad$
+		
+		\bigskip
+		\hspace*{-0.6cm}\textbf{Să se studieze natura următoarelor serii:}
+		\vspace{0.2cm}
+		
+		\item $\displaystyle \sum_{n=1}^{\infty} \frac{4n-1}{3n+2} \quad$
+		\item $\displaystyle \sum_{n=1}^{\infty} \left(\frac{n+1}{n}\right)^n \quad$
+		\item $\displaystyle \sum_{n=1}^{\infty} n \sin \frac{1}{n} \quad$
+	\end{enumerate}
+	
+\end{document}
