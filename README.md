@@ -18,7 +18,7 @@ V-am lăsat și documentul `.tex`, poate vă trebuie la ceva (template sau altce
 Exercițiile sunt dintr-o carte recomandată de dna. prof. Mitre, puteți vedea despre ce e vorba [aici](https://resurse.go.ro/faculty/text/biblioteca/matematica/Silvia%20DEDU%20-%20Matematici%20aplicate%20in%20economie%20-%20Culegere%20de%20probleme.pdf).
 
 ### Fișier .pdf + Sursă
-- [Tutoriat I (PDF)](TutoriatI/document.pdf)
-- [Sursa LaTeX](TutoriatI/document.tex)
+- [Tutoriat I (PDF)](TutoriatI/Tutoriat1AM.pdf)
+- [Sursa LaTeX](TutoriatI/Tutoriat1.tex)
 
 </details>
