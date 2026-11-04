@@ -22,3 +22,18 @@ Exercițiile sunt dintr-o carte recomandată de dna. prof. Mitre, puteți vedea 
 - [Sursa LaTeX](Tutoriat1/Tutoriat1.tex)
 
 </details>
+
+
+<details>
+<summary><h2>Tutoriat #2(WIP) - 06.11.2026</h2></summary>
+
+### Descriere
+Al doilea tutoriat despre seriile de puteri: raza de convergență, natura seriei în funcție de aceasta, studiul la capetele intervalului și mulțimea de convergență. La final găsiți o listă de probleme propuse (sunt luate din [aceeași](https://resurse.go.ro/faculty/text/biblioteca/matematica/Silvia%20DEDU%20-%20Matematici%20aplicate%20in%20economie%20-%20Culegere%20de%20probleme.pdf) carte)
+
+Notă: momentan e WIP, nu garantăm că va ramâne în forma asta pâna va avea efectiv loc tutoriatul.
+
+### Fișier .pdf + Sursă
+- [Tutoriat II (PDF)](Tutoriat2/document.pdf)
+- [Sursa LaTeX](Tutoriat2/document.tex)
+
+</details>
