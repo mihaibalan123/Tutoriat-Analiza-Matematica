@@ -1,0 +1,170 @@
+\documentclass[12pt, a4paper]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[romanian]{babel}
+\usepackage{indentfirst}
+
+\usepackage{csquotes}
+\DeclareQuoteStyle{romanian}
+{\quotedblbase}
+{\textquotedblright}
+{\guillemotleft}
+{\guillemotright}
+
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage[margin=2.5cm]{geometry}
+
+\usepackage{graphicx}
+
+\usepackage[
+colorlinks,
+linkcolor={black},
+menucolor={black},
+citecolor={black},
+urlcolor={blue}
+]{hyperref}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{enumitem}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+
+\usepackage{fancyhdr}
+
+\title{Analiză Matematică -- Seminar VI\\ Serii de Puteri}
+\author{Ristea Octavian-Cristian \and Bălan Mihai}
+
+\begin{document}
+	
+	\begin{titlepage}
+		\centering
+		\vspace*{2cm}
+		{\Huge \bfseries Analiză Matematică \par}
+		\vspace{1cm}
+		{\Large \bfseries Seminar VI: Serii de Puteri \par}
+		\vspace{0.5cm}
+		\vfill
+		{\Large \textbf{Autori:} \\ Ristea Octavian-Cristian \\ Bălan Mihai \par}
+		\vspace{1.5cm}
+		{\large Universitatea din București \par}
+		{\large Facultatea de Matematică și Informatică \par}
+		\vspace{2cm}
+	\end{titlepage}
+	
+	\fancypagestyle{main}{
+		\fancyhf{}
+		\renewcommand\headrulewidth{0.4pt}
+		\fancyhead[L]{\small Analiză Matematică -- Seminar VI}
+		\fancyhead[R]{\small Serii de Puteri}
+		\fancyfoot[C]{\thepage}
+	}
+	
+	\cleardoublepage
+	\tableofcontents
+	\cleardoublepage
+	
+	\pagestyle{main}
+	
+	\chapter{Serii de Puteri}
+	
+	O \textbf{serie de puteri} este o serie de forma
+	\[
+	\sum_{n \ge 1} a_n x^n, \qquad x \in \mathbb{R}.
+	\]
+	Pentru o astfel de serie ne interesează:
+	\begin{itemize}
+		\item \textbf{raza de convergență} $R$;
+		\item \textbf{mulțimea de convergență} $A_x$.
+	\end{itemize}
+	
+	\section{Raza de Convergență}
+	
+	Se calculează una dintre limitele:
+	\[
+	l =
+	\begin{cases}
+		\displaystyle \overline{\lim_{n \to \infty}} \, \sqrt[n]{\abs{a_n}} \\[3mm]
+		\displaystyle \overline{\lim_{n \to \infty}} \, \frac{\abs{a_{n+1}}}{\abs{a_n}}
+	\end{cases}
+	\implies R = \frac{1}{l} \quad \text{(raza de convergență).}
+	\]
+	\textit{Convenție:} $\dfrac{1}{0} = +\infty$ \; ; \; $\dfrac{1}{\infty} = 0$.
+	
+	\section{Natura Seriei în Funcție de $R$}
+	
+	\[
+	\implies
+	\begin{cases}
+		\text{serie absolut convergentă} & \text{pentru } x \in (-R, R) \\[1mm]
+		\text{serie divergentă} & \text{pentru } x \in (-\infty, -R) \cup (R, +\infty) \\[1mm]
+		\text{serie uniform convergentă} & \text{pentru } \forall\, x \in [-a, a] \subset (-R, R)
+	\end{cases}
+	\]
+	
+	\section{Studiul la Capete: $x = R$ și $x = -R$}
+	
+	Pentru $x = R$ și $x = -R$ \textbf{înlocuim în serie} și obținem două serii numerice de forma:
+	\[
+	\begin{cases}
+		\text{\textcircled{\scriptsize 1}} \quad \displaystyle \sum_{n} b_n, \quad b_n \in \mathbb{R}_+^{*} \\[4mm]
+		\text{\textcircled{\scriptsize 2}} \quad \displaystyle \sum_{n} (-1)^n b_n
+	\end{cases}
+	\]
+	
+	\paragraph{Cazul 1:} dacă $\displaystyle \lim_{n \to \infty} b_n \neq 0$, atunci seriile \textcircled{\scriptsize 1} și \textcircled{\scriptsize 2} sunt \textbf{divergente}.
+	
+	\paragraph{Cazul 2:} dacă $\displaystyle \lim_{n \to \infty} b_n = 0$, atunci:
+	\begin{itemize}
+		\item \textcircled{\scriptsize 2} $\to$ se aplică \textbf{Criteriul lui Leibniz};
+		\item \textcircled{\scriptsize 1} $\to$ \textbf{?} \; (se încearcă toate criteriile de la seriile cu termeni pozitivi: seria geometrică, seria armonică generalizată, criteriul comparației, Raabe-Duhamel etc.).
+	\end{itemize}
+	
+	\section{Mulțimea de Convergență}
+	
+	Mulțimea de convergență este una dintre următoarele:
+	\[
+	A_x = (-R, R) \; / \; [-R, R) \; / \; (-R, R] \; / \; [-R, R].
+	\]
+	Care dintre cele patru variante apare se decide studiind separat capetele $x = \pm R$.
+	
+	
+	\chapter{Probleme Propuse}
+	
+	\textbf{Să se studieze convergența seriilor de puteri} (se cere mulțimea de convergență):
+	
+	\begin{enumerate}[label=\textbf{\arabic*.}]
+		\item $\displaystyle \sum_{n=1}^{\infty} (-1)^{n+1} \frac{1}{(2n-1) \cdot 3^n} \cdot x^n, \; x \in \mathbb{R}$
+		\item $\displaystyle \sum_{n=1}^{\infty} \frac{x^n}{2^n \cdot n^2}$
+		\item $\displaystyle \sum_{n=1}^{\infty} (-1)^n \frac{x^n}{n^n}$
+		\item $\displaystyle \sum_{n=1}^{\infty} \frac{1}{(5n-1) \cdot 3^n} \, x^n$
+		\item $\displaystyle \sum_{n=1}^{\infty} n! \cdot x^n$
+		\item $\displaystyle \sum_{n=1}^{\infty} \frac{x^n}{\sqrt{n}}$
+		\item $\displaystyle \sum_{n=1}^{\infty} \frac{n^n}{n!} \, x^n$
+		\item $\displaystyle \sum_{n=1}^{\infty} \left[1 - (-4)^n\right] x^n$
+		\item $\displaystyle \sum_{n=1}^{\infty} \left(1 + \frac{1}{n}\right)^{n^2} \cdot x^n$
+		\item $\displaystyle \sum_{n=1}^{\infty} (-2)^n \frac{x^{3n+1}}{n+1}$
+		\item $\displaystyle \sum_{n=0}^{\infty} \frac{x^{3n+5}}{n!}$
+		\item $\displaystyle \sum_{n=1}^{\infty} \frac{x^n}{2^n + 3^n}$
+		\item $\displaystyle \sum_{n=1}^{\infty} \frac{n^n}{(n!)^2} \cdot x^n$
+		\item $\displaystyle \sum_{n=1}^{\infty} \frac{(\ln a)^n}{n!} \cdot x^n, \; a > 0$
+		\item $\displaystyle \sum_{n=0}^{\infty} \left(\frac{2}{3}\right)^n x^{2n}$
+		\item $\displaystyle \sum_{n=0}^{\infty} \frac{x^{3n}}{(3n)!}$
+		\item $\displaystyle \sum_{n=1}^{\infty} \frac{n!}{n^n \cdot 2^n} \cdot x^n$
+		\item $\displaystyle \sum_{n=0}^{\infty} \frac{x^{n+2}}{n+1}$
+	\end{enumerate}
+	
+	\bigskip
+	\noindent\textbf{Să se determine mulțimea de convergență și suma următoarelor serii de puteri:}
+	\vspace{0.2cm}
+	
+	\begin{enumerate}[label=\textbf{\arabic*.}, resume]
+		\item $\displaystyle \sum_{n=1}^{\infty} n x^{n+1}$
+		\item $\displaystyle \sum_{n=1}^{\infty} n(n+1) x^{n-1}$
+	\end{enumerate}
+	
+\end{document}
